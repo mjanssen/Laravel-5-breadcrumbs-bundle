@@ -36,9 +36,21 @@ class Breadcrumbs {
 
         self::isFirstBreadcrumb();
 
-        self::$separator = (isset(self::$_config['useSeparator']) && self::$_config['useSeparator'] === true && self::$_config['separator'] != '')
-                            ? self::$_config['separator']
-                            : (isset(self::$_config['bootstrapSeparator']) && self::$_config['bootstrapSeparator'] === true) ? '' :'/';
+        if (isset(self::$_config['useSeparator']) && self::$_config['useSeparator'] === true && self::$_config['separator'] != '') {
+            $separator = self::$_config['separator'];
+        } else {
+            if (isset(self::$_config['bootstrapSeparator']) && self::$_config['bootstrapSeparator'] === true) {
+                $separator = '';
+            } else {
+                $separator = '/';
+            }
+        }
+
+        self::$separator = $separator;
+
+//        self::$separator = (isset(self::$_config['useSeparator']) && self::$_config['useSeparator'] === true && self::$_config['separator'] != '')
+//                            ? self::$_config['separator']
+//                            : (isset(self::$_config['bootstrapSeparator']) && self::$_config['bootstrapSeparator'] === true) ? '' :'/';
 
         $totalBreadcrumbs = self::getBreadcrumbAmount();
 
