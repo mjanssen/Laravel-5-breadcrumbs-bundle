@@ -1,5 +1,5 @@
 {
-    "name": "mjanssen/breadcrumbs-bundle",
+    "name": "mjanssen/breadcrumbsBundle",
     "description": "A simple solution for breadcrumbs in Laravel 5+",
     "license": "MIT",
     "authors": [
