@@ -17,7 +17,7 @@ To do this, edit your own composer.json file to match it like this:
 ```
 "psr-4": {
   "App\\": "app/",
-    "mjanssen\\BreadcrumbsBundle\\": "vendor/mjanssen/BreadcrumbsBundle/src"
+    "mjanssen\\BreadcrumbsBundle\\": "vendor/mjanssen/laravel-5-breadcrumbs/src"
   }
 ```
 
