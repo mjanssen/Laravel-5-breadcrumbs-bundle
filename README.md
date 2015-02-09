@@ -9,7 +9,7 @@ Edit your .json file and add the following line to your "require"
 ``"mjanssen/laravel-5-breadcrumbs": "dev-master"``
 
 After this run the `composer update` to update your framework and get the breadcrumb class loaded into your files.
-The files will be placed in the `vendor/mjanssen/BreadcrumbsBundle` folder.
+The files will be placed in the `vendor/mjanssen/laravel-5-breadcrumbs` folder.
 
 After the files will be downloaded and stored in your Vendor folder, the class needs to be autoloaded by Composer.
 To do this, edit your own composer.json file to match it like this:
