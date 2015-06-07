@@ -93,17 +93,14 @@ class Breadcrumbs {
 
     public static function automatic()
     {
-        $url = \Request::path();
-        $urlExplode = explode('/', $url);
 
-        $url = "/";
+        $parts = \Request::segments();
 
-        foreach ($urlExplode as $segment) {
-            $url .= $segment."/";
+        foreach ($parts as $part) {
 
-            $title = str_replace("-", " ", $segment);
+            $title = str_replace("-", " ", $part);
 
-            self::addBreadcrumb($title, $url);
+            self::addBreadcrumb($title, url($part));
         }
 
         return self::generate();
@@ -112,7 +109,7 @@ class Breadcrumbs {
     private static function isFirstBreadcrumb()
     {
         if (isset(self::$_config['automaticFirstCrumb']) && self::$_config['automaticFirstCrumb']['enabled'] === true) {
-            self::prepend( self::createBreadcrumb(self::$_config['automaticFirstCrumb']['value'], '/') );
+            self::prepend( self::createBreadcrumb(self::$_config['automaticFirstCrumb']['value'], url('/')) );
         }
     }
 }
