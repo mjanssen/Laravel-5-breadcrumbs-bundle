@@ -95,12 +95,14 @@ class Breadcrumbs {
     {
 
         $parts = \Request::segments();
+		$current = "";
 
         foreach ($parts as $part) {
 
             $title = str_replace("-", " ", $part);
+			$current .= "/" . $part;
 
-            self::addBreadcrumb($title, url($part));
+            self::addBreadcrumb($title, url($current));
         }
 
         return self::generate();
