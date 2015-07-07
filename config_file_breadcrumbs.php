@@ -74,4 +74,14 @@ return [
      * If you want to use your own class, make sure to set this option to false, and set your own class in "ulLiClass".
      */
     'bootstrap' => true,
+
+    /*
+     * @array
+     *
+     * Put values that should be ignored in this array. Could come in handy for automatic generation while using
+     * languages. (example.com/en/some-slug) where you want the languages to be filtered out of the breadcrumbs.
+     */
+    'except' => array(
+
+    )
 ];

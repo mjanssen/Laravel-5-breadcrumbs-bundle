@@ -48,10 +48,6 @@ class Breadcrumbs {
 
         self::$separator = $separator;
 
-//        self::$separator = (isset(self::$_config['useSeparator']) && self::$_config['useSeparator'] === true && self::$_config['separator'] != '')
-//                            ? self::$_config['separator']
-//                            : (isset(self::$_config['bootstrapSeparator']) && self::$_config['bootstrapSeparator'] === true) ? '' :'/';
-
         $totalBreadcrumbs = self::getBreadcrumbAmount();
 
         $output .= '<div itemscope itemtype="http://schema.org/WebPage">';
@@ -93,6 +89,7 @@ class Breadcrumbs {
 
     public static function automatic()
     {
+        self::$_config = config('breadcrumbs');
 
         $parts = \Request::segments();
 		$current = "";
@@ -102,7 +99,10 @@ class Breadcrumbs {
             $title = str_replace("-", " ", $part);
 			$current .= "/" . $part;
 
-            self::addBreadcrumb($title, url($current));
+            if (!in_array($title, self::$_config['except'])) {
+
+                self::addBreadcrumb($title, url($current));
+            }
         }
 
         return self::generate();
