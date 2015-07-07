@@ -99,6 +99,7 @@ lastBreadcrumbClickable
 automaticFirstCrumb
 ulLiClass
 bootstrap
+except
 ```
 
 Additionally you can use a config file to edit some features, for example the separator. To do this, create a php file in the
