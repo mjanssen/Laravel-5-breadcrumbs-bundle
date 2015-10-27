@@ -59,6 +59,14 @@ return [
         'enabled' => true,
         'value' => 'Home'
     ),
+    
+      /*
+     * @bool
+     *
+     * Show only first bredacrumbs or hide
+     */
+
+    'showOnlyFirst' => false,
 
     /*
      * @string
