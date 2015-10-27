@@ -49,6 +49,8 @@ class Breadcrumbs {
         self::$separator = $separator;
 
         $totalBreadcrumbs = self::getBreadcrumbAmount();
+        
+        if (!self::$_config['showOnlyFirst'] && $totalBreadcrumbs<=1)return false;
 
         $output .= '<div itemscope itemtype="http://schema.org/WebPage">';
 
