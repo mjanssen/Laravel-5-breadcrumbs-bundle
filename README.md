@@ -80,7 +80,7 @@ View::composer('components.breadcrumbs', function() {
 });
 ```
 
-Inside the ``breadcrumbs.blade.php`` file, you are now able to use the {{ $global_breadcrumbs }} var.
+Inside the ``breadcrumbs.blade.php`` file, you are now able to use the ``{!! $global_breadcrumbs !!}`` var.
 Include the view from a ``master.blade.php`` file (or whatever your layout file is called). This can be done with ``@include``
 
 ``@include(components/breadcrumbs) // Assuming you placed the breadcrumbs.blade.php file in a components folder``
@@ -99,6 +99,7 @@ lastBreadcrumbClickable
 automaticFirstCrumb
 ulLiClass
 bootstrap
+except
 ```
 
 Additionally you can use a config file to edit some features, for example the separator. To do this, create a php file in the
