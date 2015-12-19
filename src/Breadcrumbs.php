@@ -6,7 +6,7 @@ use mjanssen\BreadcrumbsBundle\package\SingleBreadcrumb as SingleCrumb;
 
 class Breadcrumbs {
 
-    private static $_breadcrumbs = array(), $_config;
+    private static $_breadcrumbs = [], $_config;
 
     public static $separator;
 
@@ -106,6 +106,11 @@ class Breadcrumbs {
         }
 
         return self::generate();
+    }
+
+    public static function truncate()
+    {
+        self::$_breadcrumbs = [];
     }
 
     private static function isFirstBreadcrumb()
