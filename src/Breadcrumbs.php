@@ -50,8 +50,6 @@ class Breadcrumbs {
 
         $totalBreadcrumbs = self::getBreadcrumbAmount();
 
-        $output .= '<div itemscope itemtype="http://schema.org/WebPage">';
-
         $class = (isset(self::$_config['bootstrap']) && self::$_config['bootstrap'] === true)
                     ? "breadcrumb"
                     : (isset(self::$_config['ulLiClass'])
@@ -76,8 +74,6 @@ class Breadcrumbs {
         }
 
         $output .= '</ol>';
-        $output .= '</div>';
-        $output .= '<div class="clearfix"></div>';
 
         return $output;
     }
