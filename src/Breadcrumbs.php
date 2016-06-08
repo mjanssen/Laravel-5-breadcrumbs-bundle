@@ -63,14 +63,15 @@ class Breadcrumbs {
         foreach (self::$_breadcrumbs as $breadcrumb) {
 
             if ($count === $totalBreadcrumbs && isset(self::$_config['lastBreadcrumbClickable']) && self::$_config['lastBreadcrumbClickable'] === false) {
-                $output .= '<li class="active">' . $breadcrumb->name . '</li>';
+                $output .= '<li class="active">' . $breadcrumb->name;
             } else {
-                $output .= '<li>' . $breadcrumb->crumb . '</li>';
+                $output .= '<li>' . $breadcrumb->crumb;
             }
 
             if ($count < $totalBreadcrumbs) {
-                $output .= ' ' . self::$separator . '</li>';
+                $output .= ' ' . self::$separator;
             }
+            $output .= '</li>';
 
             $count++;
         }
