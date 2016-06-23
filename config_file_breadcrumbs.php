@@ -6,21 +6,21 @@
 
 return [
 
-    /*
+    /**
      * @bool true|false
      *
      * UCfirst each title, set by user.
      */
     'uppercaseFirst' => true,
 
-    /*
+    /**
      * @bool true|false
      *
      * Use a separator in the breadcrumbs. If so, the separator field will be shown (if not empty).
      */
     'useSeparator' => true,
 
-    /*
+    /**
      * @bool true|false
      *
      * Use the custom separator from bootstrap, created with CSS. If you want to use your own separator, make sure
@@ -28,21 +28,21 @@ return [
      */
     'bootstrapSeparator' => true,
 
-    /*
+    /**
      * @string
      *
      * Separator used to build the breadcrumbs. Could be any symbol.
      */
     'separator' => '',
 
-    /*
+    /**
      * @bool true|false
      *
      * If the last breadcrumb should be clickable, set this option to true.
      */
     'lastBreadcrumbClickable' => false,
 
-    /*
+    /**
      * @array
      *
      * If there should be a breadcrumb set automatically, linking to the homepage (/).
@@ -60,14 +60,14 @@ return [
         'value' => 'Home'
     ),
 
-    /*
+    /**
      * @string
      *
      * set an class for the UL or OL where the list items <li> will be placed in.
      */
     'ulLiClass' => 'breadcrumb',
 
-    /*
+    /**
      * @bool true|false
      *
      * If you want to use the bootstrap styling (bootstrap class) from Bootstrap. This option could be set to true.
@@ -75,7 +75,7 @@ return [
      */
     'bootstrap' => true,
 
-    /*
+    /**
      * @array
      *
      * Put values that should be ignored in this array. Could come in handy for automatic generation while using
@@ -83,5 +83,12 @@ return [
      */
     'except' => array(
 
-    )
+    ),
+
+    /**
+     * @bool
+     *
+     * Strip any .html from the breadcrumb name (which is shown on the page)
+     */
+    'stripHtmlExtension' => true
 ];

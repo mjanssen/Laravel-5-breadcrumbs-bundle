@@ -12,6 +12,10 @@ class Breadcrumbs {
 
     public static function createBreadcrumb($name, $url)
     {
+        if (self::$_config['stripHtmlExtension']) {
+            $name = (strpos($name, '.html')) ? str_replace('.html', '', $name) : $name;
+        }
+
         return new SingleCrumb($name, $url);
     }
 
@@ -50,7 +54,7 @@ class Breadcrumbs {
 
         $totalBreadcrumbs = self::getBreadcrumbAmount();
 
-        $output .= '<div itemscope itemtype="http://schema.org/WebPage">';
+        $output .= '<div>';
 
         $class = (isset(self::$_config['bootstrap']) && self::$_config['bootstrap'] === true)
                     ? "breadcrumb"
@@ -58,14 +62,14 @@ class Breadcrumbs {
                         ? self::$_config['ulLiClass']
                         : "") ;
 
-        $output .= '<ol class="'.$class.'" itemprop="breadcrumb">';
+        $output .= '<ol itemscope itemtype="http://schema.org/BreadcrumbList" class="'.$class.'">';
 
         foreach (self::$_breadcrumbs as $breadcrumb) {
 
             if ($count === $totalBreadcrumbs && isset(self::$_config['lastBreadcrumbClickable']) && self::$_config['lastBreadcrumbClickable'] === false) {
-                $output .= '<li class="active">' . $breadcrumb->name . '</li>';
+                $output .= '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="active">' . $breadcrumb->name . '<meta itemprop="position" content="' . $count . '" /></li>';
             } else {
-                $output .= '<li>' . $breadcrumb->crumb . '</li>';
+                $output .= '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">' . $breadcrumb->crumb . '<meta itemprop="position" content="' . $count . '" /></li>';
             }
 
             if ($count < $totalBreadcrumbs) {
@@ -99,10 +103,13 @@ class Breadcrumbs {
             $title = str_replace("-", " ", $part);
 			$current .= "/" . $part;
 
-            if (!in_array($title, self::$_config['except'])) {
+            if ((in_array('numbers*', self::$_config['except']) && is_numeric($title)) ||
+                in_array($title, self::$_config['except'])) {
 
-                self::addBreadcrumb($title, url($current));
+                continue;
             }
+
+            self::addBreadcrumb($title, url($current));
         }
 
         return self::generate();
