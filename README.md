@@ -100,10 +100,13 @@ automaticFirstCrumb
 ulLiClass
 bootstrap
 except
+stripHtmlExtension
 ```
 
 Additionally you can use a config file to edit some features, for example the separator. To do this, create a php file in the
 ``/config`` folder called: ``breadcrumbs.php``. The source files of this Repo, there will be an example config file which
 includes all the available options + information about them.
+
+To remove id's (used for products or persons e.d.), put "numbers*" in the except array. This way numbers are removed from the breadcrumbs.
 
 Config file can be found at: https://github.com/mjanssen/Laravel-5-breadcrumbs-bundle/blob/master/config_file_breadcrumbs.php
