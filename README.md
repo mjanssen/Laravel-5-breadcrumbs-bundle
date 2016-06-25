@@ -50,6 +50,10 @@ To generate the breadcrumb HTML, you can use the *generate()* function.
 Breadcrumbs::generate();
 ```
 
+"Undefined index ..."
+---------------------
+If you are receiving an error about "undefined index ...", please make sure you copied the config file to your /config directory (under /config/breadcrumbs.php).
+
 Additional methods
 --------------
 
@@ -86,6 +90,13 @@ Include the view from a ``master.blade.php`` file (or whatever your layout file 
 ``@include(components/breadcrumbs) // Assuming you placed the breadcrumbs.blade.php file in a components folder``
 
 The breadcrumbs will now show up on every page where your layout is used.
+
+#### Changing the base url (for automatic breadcrumbs)
+To make the home segment in the automatic breadcrumbs link to an other page
+
+`first segment -> Home (example.com)` => `first segment -> Home (example.com/admin)`
+ 
+You can change the base url with `Breadcrumbs::setHomeUrlBase("admin")` (for this example). Please note, this function only works for the automatic breadcrumb generation, since the addBreadcrumb method already expects full url's.
 
 Options
 ======
