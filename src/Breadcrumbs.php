@@ -6,7 +6,7 @@ use mjanssen\BreadcrumbsBundle\package\SingleBreadcrumb as SingleCrumb;
 
 class Breadcrumbs {
 
-    private static $_breadcrumbs = [], $_config;
+    private static $_breadcrumbs = [], $_config, $_homeUrlBase = false;
 
     public static $separator;
 
@@ -109,10 +109,17 @@ class Breadcrumbs {
                 continue;
             }
 
-            self::addBreadcrumb($title, url($current));
+            $uri = (self::$_homeUrlBase) ? self::$_homeUrlBase . $current : $current;
+
+            self::addBreadcrumb($title, url($uri));
         }
 
         return self::generate();
+    }
+
+    public static function setHomeUrlBase($value)
+    {
+        self::$_homeUrlBase = $value;
     }
 
     public static function truncate()
@@ -123,7 +130,8 @@ class Breadcrumbs {
     private static function isFirstBreadcrumb()
     {
         if (isset(self::$_config['automaticFirstCrumb']) && self::$_config['automaticFirstCrumb']['enabled'] === true) {
-            self::prepend( self::createBreadcrumb(self::$_config['automaticFirstCrumb']['value'], url('/')) );
+            $uri = (self::$_homeUrlBase) ? self::$_homeUrlBase : '/';
+            self::prepend( self::createBreadcrumb(self::$_config['automaticFirstCrumb']['value'], url($uri)) );
         }
     }
 }
