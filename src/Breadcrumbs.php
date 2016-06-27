@@ -12,7 +12,7 @@ class Breadcrumbs {
 
     public static function createBreadcrumb($name, $url)
     {
-        if (self::$_config['stripHtmlExtension']) {
+        if (isset(self::$_config['stripHtmlExtension']) && self::$_config['stripHtmlExtension']) {
             $name = (strpos($name, '.html')) ? str_replace('.html', '', $name) : $name;
         }
 
@@ -40,7 +40,8 @@ class Breadcrumbs {
 
         self::isFirstBreadcrumb();
 
-        if (isset(self::$_config['useSeparator']) && self::$_config['useSeparator'] === true && self::$_config['separator'] != '') {
+        if (isset(self::$_config['useSeparator']) && self::$_config['useSeparator'] === true &&
+            isset(self::$_config['separator']) && self::$_config['separator'] != '') {
             $separator = self::$_config['separator'];
         } else {
             if (isset(self::$_config['bootstrapSeparator']) && self::$_config['bootstrapSeparator'] === true) {
@@ -103,7 +104,7 @@ class Breadcrumbs {
             $title = str_replace("-", " ", $part);
 			$current .= "/" . $part;
 
-            if ((in_array('numbers*', self::$_config['except']) && is_numeric($title)) ||
+            if (isset(self::$_config['except']) && (in_array('numbers*', self::$_config['except']) && is_numeric($title)) ||
                 in_array($title, self::$_config['except'])) {
 
                 continue;
@@ -125,6 +126,11 @@ class Breadcrumbs {
     public static function truncate()
     {
         self::$_breadcrumbs = [];
+    }
+
+    public static function getBreadcrumbs()
+    {
+        return self::$_breadcrumbs;
     }
 
     private static function isFirstBreadcrumb()

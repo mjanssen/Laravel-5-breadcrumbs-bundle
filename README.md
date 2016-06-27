@@ -57,11 +57,21 @@ If you are receiving an error about "undefined index ...", please make sure you 
 Additional methods
 --------------
 
+### Automatic generation
+
 For an easy way of generating breadcrumbs, the bundle also provides an *automatic()* function. This function will retreive the
 segments from the current url, and builds the breadcrumbs around them. *Breadcrumb::generate()* is not needed, since the
 *automatic()* function will build the breadcrumbs, and returns the HTML for the breadcrumbs.
 
 ``Breadcrumbs::automatic();``
+
+### Removing stored breadcrumbs
+
+To remove all the breadcrumbs you set, simply use ``Breadcrumbs::truncate();`` to remove all the stored breadcrumbs.
+ 
+### Retrieving the stored breadcrumbs
+ 
+To get the stored breadcrumbs in a structured array, call ``Breadcrumbs::getBreadcrumbs();``. This will return an array which contains the information used to create the breadcrumbs.  
 
 Example global usage
 --------------
@@ -94,9 +104,9 @@ The breadcrumbs will now show up on every page where your layout is used.
 #### Changing the base url (for automatic breadcrumbs)
 To make the home segment in the automatic breadcrumbs link to an other page
 
-`first segment -> Home (example.com)` => `first segment -> Home (example.com/admin)`
+``first segment -> Home (example.com)` => `first segment -> Home (example.com/admin)``
  
-You can change the base url with `Breadcrumbs::setHomeUrlBase("admin")` (for this example). Please note, this function only works for the automatic breadcrumb generation, since the addBreadcrumb method already expects full url's.
+You can change the base url with ``Breadcrumbs::setHomeUrlBase("admin")`` (for this example). Please note, this function only works for the automatic breadcrumb generation, since the addBreadcrumb method already expects full url's.
 
 Options
 ======
